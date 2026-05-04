@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EnergienutzungApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EnergienutzungApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EnergienutzungApplication.class, args);
+    }
 
 }

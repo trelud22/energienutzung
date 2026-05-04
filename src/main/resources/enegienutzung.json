@@ -1,0 +1,72 @@
+[
+  {
+    "Jahr": 2005,
+    "Raumklima und Warmwasser": "365135,4549",
+    "Prozesswärme <200 °C": "97825,6856",
+    "Prozesswärme >200 °C": "111990,9108",
+    "Standmotoren": "108615,5342",
+    "Verkehr": "390258,3692",
+    "Beleuchtung und EDV": "31799,0041",
+    "Elektrochemie": "259,5738"
+  },
+  {
+    "Jahr": 2010,
+    "Raumklima und Warmwasser": "371534,7197",
+    "Prozesswärme <200 °C": "98435,8021",
+    "Prozesswärme >200 °C": "118414,6181",
+    "Standmotoren": "115345,4856",
+    "Verkehr": "379833,3734",
+    "Beleuchtung und EDV": "32222,7679",
+    "Elektrochemie": "356,1325"
+  },
+  {
+    "Jahr": 2015,
+    "Raumklima und Warmwasser": "338279,7328",
+    "Prozesswärme <200 °C": "84583,8239",
+    "Prozesswärme >200 °C": "133511,9728",
+    "Standmotoren": "112224,9852",
+    "Verkehr": "392843,1045",
+    "Beleuchtung und EDV": "35206,9682",
+    "Elektrochemie": "36,5019"
+  },
+  {
+    "Jahr": 2020,
+    "Raumklima und Warmwasser": "347695,0369",
+    "Prozesswärme <200 °C": "87449,98",
+    "Prozesswärme >200 °C": "129219,1457",
+    "Standmotoren": "111351,8928",
+    "Verkehr": "345049,1819",
+    "Beleuchtung und EDV": "35201,7731",
+    "Elektrochemie": "36,4928"
+  },
+  {
+    "Jahr": 2022,
+    "Raumklima und Warmwasser": "353255,0031",
+    "Prozesswärme <200 °C": "90700,6039",
+    "Prozesswärme >200 °C": "132362,8837",
+    "Standmotoren": "111405,5358",
+    "Verkehr": "350915,6132",
+    "Beleuchtung und EDV": "36940,2335",
+    "Elektrochemie": "40,0414"
+  },
+  {
+    "Jahr": 2023,
+    "Raumklima und Warmwasser": "349479,8686",
+    "Prozesswärme <200 °C": "81472,8098",
+    "Prozesswärme >200 °C": "121456,2325",
+    "Standmotoren": "107258,8241",
+    "Verkehr": "354138,6872",
+    "Beleuchtung und EDV": "36050,5337",
+    "Elektrochemie": "35,6981"
+  },
+  {
+    "Jahr": 2024,
+    "Raumklima und Warmwasser": "338402,7146",
+    "Prozesswärme <200 °C": "85287,0876",
+    "Prozesswärme >200 °C": "118289,9447",
+    "Standmotoren": "109933,9205",
+    "Verkehr": "355421,1436",
+    "Beleuchtung und EDV": "36185,4117",
+    "Elektrochemie": "36,0057"
+  }
+]
