@@ -17,20 +17,20 @@ import java.util.List;
 public class Sector {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long sector_id;
+    private Long sector_id;
 
-    String sector;
+    private String sector;
 
     @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "year_id")
     @JsonBackReference
-    Year year;
+    private Year year;
 
     @OneToMany(
             mappedBy = "sector",
             cascade = CascadeType.ALL
     )
     @JsonManagedReference
-    List<Fuel> fuels;
+    private List<Fuel> fuels;
 }

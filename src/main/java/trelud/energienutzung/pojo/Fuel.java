@@ -15,34 +15,34 @@ import lombok.ToString;
 public class Fuel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long fuel_id;
+    private Long fuel_id;
 
     @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "sector_id")
     @JsonBackReference
-    Sector sector;
+    private Sector sector;
 
-    String fuel;
+    private String fuel;
 
     @JsonProperty("Space and water heating")
-    Double SpaceAndWaterHeating;
+    private Double SpaceAndWaterHeating;
 
     @JsonProperty("Process heat <200 °C")
-    Double processHeatUnder200;
+    private Double processHeatUnder200;
 
     @JsonProperty("Process heat >200 °C")
-    Double processHeatOver200;
+    private Double processHeatOver200;
 
     @JsonProperty("Stationary engines")
-    Double stationaryEngines;
+    private Double stationaryEngines;
 
     @JsonProperty("Traction")
-    Double traction;
+    private Double traction;
 
     @JsonProperty("Lighting and computing")
-    Double lightingAndComputing;
+    private Double lightingAndComputing;
 
     @JsonProperty("Electrochemical purposes")
-    Double electrochemicalPurposes;
+    private Double electrochemicalPurposes;
 }

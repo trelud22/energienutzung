@@ -15,14 +15,14 @@ import java.util.List;
 public class Year {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long year_id;
+    private Long year_id;
 
-    Integer year;
+    private Integer year;
 
     @OneToMany(
             mappedBy = "year",
             cascade = CascadeType.ALL
     )
     @JsonManagedReference
-    List<Sector> sectors;
+    private List<Sector> sectors;
 }
