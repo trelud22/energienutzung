@@ -4,6 +4,5 @@ import java.util.List;
 
 public class YearDto {
     Integer year;
-    List<FuelDto> fuels;
-    SectorDto sector;
+    List<SectorDto> sectors;
 }

@@ -1,7 +1,6 @@
 package trelud.energienutzung.pojo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,9 +19,9 @@ public class Fuel {
 
     @ToString.Exclude
     @ManyToOne
-    @JoinColumn(name = "year_id")
+    @JoinColumn(name = "sector_id")
     @JsonBackReference
-    Year year;
+    Sector sector;
 
     String fuel;
 

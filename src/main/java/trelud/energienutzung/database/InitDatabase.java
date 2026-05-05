@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import trelud.energienutzung.pojo.Sector;
+import trelud.energienutzung.pojo.Year;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +17,7 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class InitDatabase implements ApplicationRunner {
-    public final SectorRepository sectorRepository;
+    public final YearRepository yearRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -25,21 +26,21 @@ public class InitDatabase implements ApplicationRunner {
 
             ObjectMapper objectMapper = new ObjectMapper();
 
-            List<Sector> sectors = objectMapper
-                    .readerForListOf(Sector.class)
+            List<Year> years = objectMapper
+                    .readerForListOf(Year.class)
                     .readValue(is);
 
-            sectors.forEach(s -> {
-                s.getYears().forEach(y -> {
-                    y.getFuels().forEach(f -> {
-                        f.setYear(y);
+            years.forEach(y -> {
+                y.getSectors().forEach(s -> {
+                    s.getFuels().forEach(f -> {
+                        f.setSector(s);
                     });
-                    y.setSector(s);
+                    s.setYear(y);
                 });
             });
 
 
-            sectorRepository.saveAll(sectors);
+            yearRepository.saveAll(years);
         }catch (IOException ioex){
             log.warn("File problem");
             log.debug("File problem " + ioex.getMessage());

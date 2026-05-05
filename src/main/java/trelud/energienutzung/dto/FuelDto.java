@@ -2,7 +2,7 @@ package trelud.energienutzung.dto;
 
 public class FuelDto {
     Long fuel_id;
-    YearDto year;
+    SectorDto sector;
     String fuel;
 
     Double SpaceAndWaterHeating;

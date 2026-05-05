@@ -4,5 +4,6 @@ import java.util.List;
 
 public class SectorDto {
     String sector;
-    List<YearDto> years;
+    List<FuelDto> fuels;
+    YearDto year;
 }

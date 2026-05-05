@@ -1,10 +1,12 @@
 package trelud.energienutzung.pojo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -19,10 +21,16 @@ public class Sector {
 
     String sector;
 
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "year_id")
+    @JsonBackReference
+    Year year;
+
     @OneToMany(
             mappedBy = "sector",
             cascade = CascadeType.ALL
     )
     @JsonManagedReference
-    List<Year> years;
+    List<Fuel> fuels;
 }
