@@ -1,5 +1,6 @@
 package trelud.energienutzung.pojo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +23,6 @@ public class Sector {
             mappedBy = "sector",
             cascade = CascadeType.ALL
     )
+    @JsonManagedReference
     List<Year> years;
 }
