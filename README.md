@@ -6,6 +6,9 @@
   + Sektoren
   + Jahre
   + Energiequellen
++ Aufarbeitung der Daten zur Verbindung mit anderen Teams
+  + Marcel & Joshi
+  + Gabriel & Felix
 + Convert CSV to JSON
   + write our own custom converter for no data loss
 
