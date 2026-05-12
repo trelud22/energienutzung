@@ -1,28 +1,22 @@
 package trelud.energienutzung.pojo;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
 @Entity
+@Table(name = "year")
+@Data
 public class Year {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long year_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private Integer year;
+    @Column(name = "year", nullable = false, unique = true)
+    private int year;
 
-    @OneToMany(
-            mappedBy = "year",
-            cascade = CascadeType.ALL
-    )
-    @JsonManagedReference
-    private List<Sector> sectors;
+    @OneToMany(mappedBy = "year", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Province> provinces;
 }

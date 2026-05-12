@@ -1,36 +1,26 @@
 package trelud.energienutzung.pojo;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@Table(name = "sector")
+@Data
 public class Sector {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long sector_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String sector;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @ToString.Exclude
-    @ManyToOne
-    @JoinColumn(name = "year_id")
-    @JsonBackReference
-    private Year year;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "province_id", nullable = false)
+    private Province province;
 
-    @OneToMany(
-            mappedBy = "sector",
-            cascade = CascadeType.ALL
-    )
-    @JsonManagedReference
+    @OneToMany(mappedBy = "sector", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Fuel> fuels;
 }
