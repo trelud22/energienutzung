@@ -1,0 +1,432 @@
+[
+  {
+    "year": 2024,
+    "regions": [
+      {
+        "region_name": "Burgenland",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 12.5,
+                "Process heat <200 °C": 4.2,
+                "Process heat >200 °C": 0.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              },
+              {
+                "fuel_name": "Natural gas",
+                "Space and water heating": 45.1,
+                "Process heat <200 °C": 12.3,
+                "Process heat >200 °C": 88.4,
+                "Stationary engines": 5.0,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Carinthia",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 8.1,
+                "Process heat <200 °C": 15.3,
+                "Process heat >200 °C": 45.2,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Lower Austria",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 45.0,
+                "Process heat <200 °C": 22.4,
+                "Process heat >200 °C": 110.5,
+                "Stationary engines": 2.1,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Upper Austria",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 31.2,
+                "Process heat <200 °C": 58.9,
+                "Process heat >200 °C": 340.2,
+                "Stationary engines": 8.4,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Salzburg",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 14.2,
+                "Process heat <200 °C": 11.1,
+                "Process heat >200 °C": 5.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting wagons": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Styria",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 28.4,
+                "Process heat <200 °C": 42.1,
+                "Process heat >200 °C": 215.6,
+                "Stationary engines": 6.2,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Tyrol",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 19.5,
+                "Process heat <200 °C": 14.8,
+                "Process heat >200 °C": 35.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Vorarlberg",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 5.2,
+                "Process heat <200 °C": 8.3,
+                "Process heat >200 °C": 12.1,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Vienna",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 55.3,
+                "Process heat <200 °C": 18.2,
+                "Process heat >200 °C": 0.0,
+                "Stationary engines": 1.5,
+                "Traction": 88.4,
+                "Lighting and computing": 142.1,
+                "Electrochemical purposes": 12.3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Not specified",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 3.1,
+                "Process heat <200 °C": 1.2,
+                "Process heat >200 °C": 0.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "year": 2025,
+    "regions": [
+      {
+        "region_name": "Burgenland",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 11.8,
+                "Process heat <200 °C": 3.9,
+                "Process heat >200 °C": 0.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              },
+              {
+                "fuel_name": "Natural gas",
+                "Space and water heating": 47.2,
+                "Process heat <200 °C": 11.9,
+                "Process heat >200 °C": 91.2,
+                "Stationary engines": 4.8,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Carinthia",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 7.5,
+                "Process heat <200 °C": 14.9,
+                "Process heat >200 °C": 42.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Lower Austria",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 42.3,
+                "Process heat <200 °C": 21.1,
+                "Process heat >200 °C": 105.0,
+                "Stationary engines": 1.9,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Upper Austria",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 29.5,
+                "Process heat <200 °C": 56.2,
+                "Process heat >200 °C": 325.0,
+                "Stationary engines": 8.0,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Salzburg",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 13.5,
+                "Process heat <200 °C": 10.5,
+                "Process heat >200 °C": 4.8,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Styria",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 26.1,
+                "Process heat <200 °C": 40.5,
+                "Process heat >200 °C": 202.1,
+                "Stationary engines": 5.9,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Tyrol",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 18.2,
+                "Process heat <200 °C": 14.1,
+                "Process heat >200 °C": 33.2,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Vorarlberg",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 4.9,
+                "Process heat <200 °C": 8.0,
+                "Process heat >200 °C": 11.5,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Vienna",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 51.0,
+                "Process heat <200 °C": 17.5,
+                "Process heat >200 °C": 0.0,
+                "Stationary engines": 1.4,
+                "Traction": 90.1,
+                "Lighting and computing": 145.6,
+                "Electrochemical purposes": 12.1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "region_name": "Not specified",
+        "sectors": [
+          {
+            "sector_name": "Iron and steel",
+            "fuels": [
+              {
+                "fuel_name": "Hard coal",
+                "Space and water heating": 2.8,
+                "Process heat <200 °C": 1.1,
+                "Process heat >200 °C": 0.0,
+                "Stationary engines": null,
+                "Traction": null,
+                "Lighting and computing": null,
+                "Electrochemical purposes": null
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

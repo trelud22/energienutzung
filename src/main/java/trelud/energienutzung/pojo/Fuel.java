@@ -1,5 +1,6 @@
 package trelud.energienutzung.pojo;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,32 +11,29 @@ public class Fuel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long fuel_id;
 
-    private String name;
+    @JsonAlias({"fuel_name"})
+    private String fuelName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sector_id", nullable = false)
-    private Sector sector;
-
-    @Column(name = "space_and_water_heating_tj")
+    @JsonAlias({"Space and water heating"})
     private Double spaceAndWaterHeating;
 
-    @Column(name = "process_heat_below_200c_tj")
+    @JsonAlias({"Process heat <200 °C"})
     private Double processHeatBelow200c;
 
-    @Column(name = "process_heat_above_200c_tj")
+    @JsonAlias({"Process heat >200 °C"})
     private Double processHeatAbove200c;
 
-    @Column(name = "stationary_engines_tj")
+    @JsonAlias({"Stationary engines"})
     private Double stationaryEngines;
 
-    @Column(name = "traction_tj")
+    @JsonAlias({"Traction"})
     private Double traction;
 
-    @Column(name = "lighting_and_computing_tj")
+    @JsonAlias({"Lighting and computing"})
     private Double lightingAndComputing;
 
-    @Column(name = "electrochemical_purposes_tj")
+    @JsonAlias({"Electrochemical purposes"})
     private Double electrochemicalPurposes;
 }
