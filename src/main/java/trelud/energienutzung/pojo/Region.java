@@ -1,6 +1,7 @@
 package trelud.energienutzung.pojo;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
@@ -27,4 +28,8 @@ public class Region {
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sector> sectors = new ArrayList<>();
+
+    @Transient
+    @JsonIgnore
+    private int startColumn;
 }
