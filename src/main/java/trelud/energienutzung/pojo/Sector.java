@@ -1,5 +1,6 @@
 package trelud.energienutzung.pojo;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,13 +15,6 @@ public class Sector {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @JsonAlias
     private String name;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "province_id", nullable = false)
-    private Province province;
-
-    @OneToMany(mappedBy = "sector", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Fuel> fuels;
 }

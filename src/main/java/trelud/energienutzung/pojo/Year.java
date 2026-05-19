@@ -18,5 +18,5 @@ public class Year {
     private int year;
 
     @OneToMany(mappedBy = "year", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Province> provinces;
+    private List<Region> regions;
 }
