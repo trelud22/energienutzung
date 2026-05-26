@@ -26,7 +26,7 @@ public class CSVToJson implements ApplicationRunner {
 
     public final YearRepository yearRepository;
 
-    public static final boolean READ_CSV = true;
+    public static final boolean READ_CSV = false;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
