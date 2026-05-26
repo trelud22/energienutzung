@@ -26,70 +26,75 @@ public class CSVToJson implements ApplicationRunner {
 
     public final YearRepository yearRepository;
 
+    public static final boolean READ_CSV = true;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        List<Year> years = new ArrayList<>();
-        PathMatchingResourcePatternResolver resolver =
-                new PathMatchingResourcePatternResolver();
-        Resource[] resources = resolver.getResources("2005-2024/*.csv");
-        for (Resource resource : resources) {
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(resource.getInputStream()));
-            Year currentYear = null;
-            List<Region> regions = new ArrayList<>();
-            String currentSector = null;
-            String line;
-            while ((line = reader.readLine()) != null){
-                try{
-                    String[] tokens = line.split(",");
-                    if(tokens[0].equals("\"Year\"")){
-                        int yearNumber = Integer.parseInt(tokens[1].substring(1, tokens[1].length()-1));
+        if(READ_CSV){
+            List<Year> years = new ArrayList<>();
+            PathMatchingResourcePatternResolver resolver =
+                    new PathMatchingResourcePatternResolver();
+            Resource[] resources = resolver.getResources("2005-2024/*.csv");
+            for (Resource resource : resources) {
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(resource.getInputStream()));
+                Year currentYear = null;
+                List<Region> regions = new ArrayList<>();
+                String currentSector = null;
+                String line;
+                while ((line = reader.readLine()) != null){
+                    try{
+                        String[] tokens = line.split(",");
+                        if(tokens[0].equals("\"Year\"")){
+                            int yearNumber = Integer.parseInt(tokens[1].substring(1, tokens[1].length()-1));
 
-                        Year year = years.stream()
-                                .filter(y -> y.getYear() == yearNumber)
-                                .findFirst()
-                                .orElse(null);
-                        if(year == null){
-                            year = new Year();
-                            year.setYear(
-                                    yearNumber
-                            );
-                            years.add(year);
+                            Year year = years.stream()
+                                    .filter(y -> y.getYear() == yearNumber)
+                                    .findFirst()
+                                    .orElse(null);
+                            if(year == null){
+                                year = new Year();
+                                year.setYear(
+                                        yearNumber
+                                );
+                                years.add(year);
+                            }
+                            currentYear = year;
+                        }else if(tokens[0].isBlank()){
+                            switch (tokens[1].substring(1, tokens[1].length()-1)){
+                                case "Province (NUTS 2 unit)":
+                                    for (Region region : getRegions(tokens)) {
+                                        region.setYear(currentYear);
+                                        currentYear.getRegions().add(region);
+                                        regions.add(region);
+                                    }
+                                    break;
+                                case "Useful energy category":
+                                    break;
+                                default:
+                                    addCells(tokens, regions, currentSector);
+                                    break;
+                            }
+                        } else if (!tokens[0].equals("\"Sector\"")) {
+                            currentSector = tokens[0].substring(1, tokens[0].length() - 1);
+                            for (Region region : regions) {
+                                Sector sector = new Sector();
+                                sector.setSectorName(currentSector);
+                                sector.setRegion(region);
+                                region.getSectors().add(sector);
+                            }
+                            addCells(tokens, regions, currentSector);
                         }
-                        currentYear = year;
-                    }else if(tokens[0].isBlank()){
-                        switch (tokens[1].substring(1, tokens[1].length()-1)){
-                            case "Province (NUTS 2 unit)":
-                                for (Region region : getRegions(tokens)) {
-                                    region.setYear(currentYear);
-                                    currentYear.getRegions().add(region);
-                                    regions.add(region);
-                                }
-                                break;
-                            case "Useful energy category":
-                                break;
-                            default:
-                                addCells(tokens, regions, currentSector);
-                                break;
-                        }
-                    } else if (!tokens[0].equals("\"Sector\"")) {
-                        currentSector = tokens[0].substring(1, tokens[0].length() - 1);
-                        for (Region region : regions) {
-                            Sector sector = new Sector();
-                            sector.setSectorName(currentSector);
-                            sector.setRegion(region);
-                            region.getSectors().add(sector);
-                        }
-                        addCells(tokens, regions, currentSector);
+                    }catch (ArrayIndexOutOfBoundsException ignored){
+                        log.info(resource.getFilename() + " IGNORED because " + ignored.getMessage() + "\n" + line);
                     }
-                }catch (ArrayIndexOutOfBoundsException ignored){
-                    log.info(resource.getFilename() + " IGNORED because " + ignored.getMessage() + "\n" + line);
                 }
             }
+            yearRepository.saveAll(years);
+            log.info("finished Saving");
         }
-        yearRepository.saveAll(years);
-        log.info("finished Saving");
     }
+
 
     private List<Region> getRegions(String[] tokens){
         List<Region> regions = new ArrayList<>();
