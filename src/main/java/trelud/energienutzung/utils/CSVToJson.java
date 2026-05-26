@@ -1,4 +1,4 @@
-package trelud.energienutzung.database;
+package trelud.energienutzung.utils;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +7,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
+import trelud.energienutzung.database.YearRepository;
 import trelud.energienutzung.pojo.Fuel;
 import trelud.energienutzung.pojo.Region;
 import trelud.energienutzung.pojo.Sector;
