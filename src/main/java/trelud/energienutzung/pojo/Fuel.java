@@ -24,7 +24,7 @@ public class Fuel {
     @JsonBackReference("sectorFuels")
     private Sector sector;
 
-
+    @ToDto
     @JsonAlias({"fuel_name"})
     private String fuelName;
 
