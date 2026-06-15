@@ -45,4 +45,30 @@ class DtoServiceTest {
         @ToDto
         String visible = "yes";
     }
+
+    @Test
+    void annotatedWithDefaultKey() {
+        Map<String, Object> result = DtoService.convertObject(new PersonWithDefaultKey());
+
+        assertEquals("Max", result.get("name"));
+        assertEquals(30, result.get("age"));
+    }
+
+    @Test
+    void customKeyFromAnnotation() {
+        Map<String, Object> result = DtoService.convertObject(new PersonWithCustomKey());
+
+        assertTrue(result.containsKey("fullName"));
+        assertEquals("Anna", result.get("fullName"));
+        assertFalse(result.containsKey("name"));
+    }
+
+    @Test
+    void skipsFieldsWithoutAnnotation() {
+        Map<String, Object> result = DtoService.convertObject(new PersonWithUnAnnotatedField());
+
+        assertFalse(result.containsKey("ignored"));
+        assertTrue(result.containsKey("visible"));
+        assertEquals("yes", result.get("visible"));
+    }
 }
