@@ -16,7 +16,7 @@ import java.util.List;
 public class Year {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long year_id;
 
     @ToDto
@@ -26,6 +26,6 @@ public class Year {
     @OneToMany(mappedBy = "year",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonManagedReference("yearRegions")
-    private List<Region> regions = new ArrayList<>();
+    @JsonManagedReference("yearConnection")
+    private List<Connection> connections = new ArrayList<>();
 }

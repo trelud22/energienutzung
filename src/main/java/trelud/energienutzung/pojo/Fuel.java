@@ -1,10 +1,9 @@
 package trelud.energienutzung.pojo;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.ToString;
 import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
@@ -15,14 +14,12 @@ import trelud.energienutzung.annotation.ToDto;
 public class Fuel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long fuel_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sector_id", nullable = false)
-    @ToString.Exclude
-    @JsonBackReference("sectorFuels")
-    private Sector sector;
+    @OneToOne(mappedBy = "fuel")
+    @JsonManagedReference("fuelConnection")
+    private Connection connection;
 
     @ToDto
     @JsonAlias({"fuel_name"})
