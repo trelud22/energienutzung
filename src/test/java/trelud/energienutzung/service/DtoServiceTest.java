@@ -46,6 +46,8 @@ class DtoServiceTest {
         String visible = "yes";
     }
 
+    static class EmptyObject {}
+
     @Test
     void annotatedWithDefaultKey() {
         Map<String, Object> result = DtoService.convertObject(new PersonWithDefaultKey());
@@ -86,5 +88,11 @@ class DtoServiceTest {
         Map<String, Object> addressMap = (Map<String, Object>) list.get(0);
         assertEquals("Vienna", addressMap.get("city"));
         assertEquals("1010", addressMap.get("zip"));
+    }
+
+    @Test
+    void testEmptyObject() {
+        Map<String, Object> result = DtoService.convertObject(new EmptyObject());
+        assertTrue(result.isEmpty());
     }
 }
