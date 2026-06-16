@@ -17,7 +17,7 @@ import java.util.List;
 public class Year {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long year_id;
 
     @ToDto

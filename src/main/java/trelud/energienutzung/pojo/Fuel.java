@@ -15,7 +15,7 @@ import trelud.energienutzung.annotation.ToDto;
 public class Fuel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long fuel_id;
 
     @OneToOne(mappedBy = "fuel")

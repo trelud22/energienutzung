@@ -8,10 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
-import trelud.energienutzung.database.ConnectionRepository;
-import trelud.energienutzung.database.RegionRepository;
-import trelud.energienutzung.database.SectorRepository;
-import trelud.energienutzung.database.YearRepository;
+import trelud.energienutzung.database.*;
 import trelud.energienutzung.pojo.*;
 
 import java.io.BufferedReader;
@@ -30,6 +27,7 @@ public class CSVToJson implements ApplicationRunner {
     private final RegionRepository regionRepository;
     private final SectorRepository sectorRepository;
     private final YearRepository yearRepository;
+    private final FuelRepository fuelRepository;
 
     public static final boolean READ_CSV = true;
     public static final boolean READ_FROM_FILE = true;
@@ -120,10 +118,6 @@ public class CSVToJson implements ApplicationRunner {
                                 newConnection.setYear(c.getYear());
                                 newConnection.setSector(sector);
 
-//                                c.getYear().getConnections().add(newConnection);
-//                                c.getRegion().getConnections().add(newConnection);
-//                                sector.getConnections().add(newConnection);
-
                                 yearRegionSectorConnection.add(newConnection);
                             }
                             connections.addAll(addCells(tokens, currentRegions, currentSectorName, yearRegionSectorConnection, currentYear.getYear()));
@@ -176,7 +170,6 @@ public class CSVToJson implements ApplicationRunner {
 
             Fuel newFuel = new Fuel();
             newFuel.setFuelName(tokens[1].substring(1, tokens[1].length()-1));
-            newFuel.setConnection(newConnection);
             newConnection.setFuel(newFuel);
 
             newConnectionList.add(newConnection);
@@ -243,5 +236,4 @@ public class CSVToJson implements ApplicationRunner {
         }
         return newConnectionList;
     }
-
 }

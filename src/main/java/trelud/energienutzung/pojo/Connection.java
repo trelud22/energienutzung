@@ -15,7 +15,7 @@ import trelud.energienutzung.annotation.DtoEntity;
 @DtoEntity
 public class Connection {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long connectionId;
 
     @ManyToOne
