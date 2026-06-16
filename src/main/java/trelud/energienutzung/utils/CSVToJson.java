@@ -2,6 +2,7 @@ package trelud.energienutzung.utils;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.NonNull;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.Resource;
@@ -29,7 +30,7 @@ public class CSVToJson implements ApplicationRunner {
     public static final boolean READ_FROM_FILE = true;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(@NonNull ApplicationArguments args) throws Exception {
         if(READ_CSV && READ_FROM_FILE){
             List<Connection> connections = new ArrayList<>();
             PathMatchingResourcePatternResolver resolver =
@@ -95,7 +96,7 @@ public class CSVToJson implements ApplicationRunner {
                             addCells(tokens, regions, currentSector, yearRegionSectorConnection);
                         }
                     }catch (ArrayIndexOutOfBoundsException ex){
-                        log.info(resource.getFilename() + " IGNORED because " + ex.getMessage() + "\n" + line);
+                        log.warn("{} IGNORED because {}\n{}", resource.getFilename(), ex.getMessage(), line);
                     }
                 }
                 connections.addAll(yearRegionSectorConnection);
@@ -123,7 +124,6 @@ public class CSVToJson implements ApplicationRunner {
         regions.sort(Comparator.comparingInt(Region::getStartColumn));
         Region currentRegion = null;
         Region nextRegion = regions.getFirst();
-        List<Fuel> currentFuels = new ArrayList<>();
         Fuel currentFuel = null;
 
         List<Connection> currentConnections = connections.stream()
@@ -137,7 +137,6 @@ public class CSVToJson implements ApplicationRunner {
 
             c.setFuel(newFuel);
 
-            currentFuels.add(newFuel);
         }
 
         for (int i = 0; i < tokens.length;){
@@ -162,7 +161,7 @@ public class CSVToJson implements ApplicationRunner {
                 } catch (NoSuchObjectException ignored) {}
 
             }
-            while(i < nextRegion.getStartColumn()){
+            while(nextRegion != null && i < nextRegion.getStartColumn()){
                 Double value = null;
                 try{
                     value = Double.parseDouble(
@@ -172,28 +171,30 @@ public class CSVToJson implements ApplicationRunner {
                 if(value == null){
                     value = 0.0;
                 }
-                switch ((i-2)%14){
-                    case 0:
-                        currentFuel.setSpaceAndWaterHeating(value);
-                        break;
-                    case 2:
-                        currentFuel.setProcessHeatBelow200c(value);
-                        break;
-                    case 4:
-                        currentFuel.setProcessHeatAbove200c(value);
-                        break;
-                    case 6:
-                        currentFuel.setStationaryEngines(value);
-                        break;
-                    case 8:
-                        currentFuel.setTraction(value);
-                        break;
-                    case 10:
-                        currentFuel.setLightingAndComputing(value);
-                        break;
-                    case 12:
-                        currentFuel.setElectrochemicalPurposes(value);
-                        break;
+                if(currentFuel != null){
+                    switch ((i-2)%14){
+                        case 0:
+                            currentFuel.setSpaceAndWaterHeating(value);
+                            break;
+                        case 2:
+                            currentFuel.setProcessHeatBelow200c(value);
+                            break;
+                        case 4:
+                            currentFuel.setProcessHeatAbove200c(value);
+                            break;
+                        case 6:
+                            currentFuel.setStationaryEngines(value);
+                            break;
+                        case 8:
+                            currentFuel.setTraction(value);
+                            break;
+                        case 10:
+                            currentFuel.setLightingAndComputing(value);
+                            break;
+                        case 12:
+                            currentFuel.setElectrochemicalPurposes(value);
+                            break;
+                    }
                 }
                 i++;
             }

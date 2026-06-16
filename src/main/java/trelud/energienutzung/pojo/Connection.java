@@ -18,25 +18,25 @@ public class Connection {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long connectionId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "year_id", nullable = false)
     @JsonBackReference("yearConnection")
     @ToString.Exclude
     private Year year;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fuel_id")
     @JsonBackReference("fuelConnection")
     @ToString.Exclude
     private Fuel fuel;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "region_id", nullable = false)
     @JsonBackReference("regionConnection")
     @ToString.Exclude
     private Region region;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sector_id", nullable = false)
     @JsonBackReference("sectorConnection")
     @ToString.Exclude
