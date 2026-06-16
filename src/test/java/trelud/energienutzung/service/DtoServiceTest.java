@@ -1,7 +1,6 @@
 package trelud.energienutzung.service;
 
 import org.junit.jupiter.api.Test;
-import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DtoServiceTest {
 
-    @DtoEntity
     static class Address {
         @ToDto
         String city = "Vienna";

@@ -5,14 +5,15 @@ import trelud.energienutzung.annotation.ToDto;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 public class DtoService {
     public static List<Map<String, Object>> convertList(List<?> objectsToDto){
-        return objectsToDto.stream()
-                .map(DtoService::convertObject)
-                .collect(Collectors.toList());
+        List<Map<String, Object>> dtos = new ArrayList<>();
+        while(!objectsToDto.isEmpty()){
+            dtos.add(convertObject(objectsToDto.removeLast()));
+        }
+        return dtos;
     }
 
     public static Map<String, Object> convertObject(Object o){
@@ -25,14 +26,13 @@ public class DtoService {
                 try {
                     field.setAccessible(true);
                     Object object = field.get(o);
+
                     map.put(name, object);
                 } catch (IllegalAccessException e) {
                     map.put(name, null);
                 }
             }
-
         }
-        log.info("Converted object of type {}", o.getClass().getSimpleName());
         return map;
     }
 }
