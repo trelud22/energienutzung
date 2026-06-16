@@ -3,6 +3,7 @@ package trelud.energienutzung.pojo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
@@ -16,10 +17,11 @@ import java.util.List;
 public class Year {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long year_id;
 
     @ToDto
+    @EqualsAndHashCode.Include
     private int year;
 
     @ToDto

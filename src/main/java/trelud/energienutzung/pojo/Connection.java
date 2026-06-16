@@ -15,10 +15,10 @@ import trelud.energienutzung.annotation.DtoEntity;
 @DtoEntity
 public class Connection {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long connectionId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "year_id", nullable = false)
     @JsonBackReference("yearConnection")
     @ToString.Exclude
@@ -30,13 +30,13 @@ public class Connection {
     @ToString.Exclude
     private Fuel fuel;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "region_id", nullable = false)
     @JsonBackReference("regionConnection")
     @ToString.Exclude
     private Region region;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "sector_id", nullable = false)
     @JsonBackReference("sectorConnection")
     @ToString.Exclude
