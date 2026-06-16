@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
@@ -18,11 +19,12 @@ import java.util.List;
 public class Region {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long region_id;
 
     @ToDto
     @JsonAlias({"region_name"})
+    @EqualsAndHashCode.Include
     private String regionName;
 
     @OneToMany(mappedBy = "region",

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
@@ -14,7 +15,7 @@ import trelud.energienutzung.annotation.ToDto;
 public class Fuel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fuel_id;
 
     @OneToOne(mappedBy = "fuel")
@@ -23,6 +24,7 @@ public class Fuel {
 
     @ToDto
     @JsonAlias({"fuel_name"})
+    @EqualsAndHashCode.Include
     private String fuelName;
 
     @ToDto
