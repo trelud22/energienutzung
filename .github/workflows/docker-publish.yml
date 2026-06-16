@@ -22,9 +22,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Make mvnw executable
+        run: chmod +x ${{ github.workspace }}/mvnw
+
       - name: Build with Maven
-        working-directory: .
-        run: ./mvnw -DskipTests package
+        run: ${{ github.workspace }}/mvnw -DskipTests package
 
       - name: Copy Dockerfile to target
         working-directory: .
