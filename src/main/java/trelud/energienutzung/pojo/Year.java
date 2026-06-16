@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "year")
 @Data
-@DtoEntity
 public class Year {
 
     @Id
@@ -24,7 +22,6 @@ public class Year {
     @EqualsAndHashCode.Include
     private int year;
 
-    @ToDto
     @OneToMany(mappedBy = "year",
             cascade = CascadeType.ALL,
             orphanRemoval = true)

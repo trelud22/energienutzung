@@ -2,7 +2,6 @@ package trelud.energienutzung.service;
 
 import lombok.extern.slf4j.Slf4j;
 import trelud.energienutzung.annotation.ToDto;
-import trelud.energienutzung.annotation.DtoEntity;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -26,18 +25,7 @@ public class DtoService {
                 try {
                     field.setAccessible(true);
                     Object object = field.get(o);
-                    if(object instanceof List<?>){
-                        List<Map<String, Object>> list = new ArrayList<>();
-                        ((List<?>) object)
-                                .forEach(listObject -> {
-                                    if(listObject.getClass().isAnnotationPresent(DtoEntity.class)){
-                                        list.add(convertObject(listObject));
-                                    }
-                                });
-                        map.put(name, list);
-                    }else{
-                        map.put(name, object);
-                    }
+                    map.put(name, object);
                 } catch (IllegalAccessException e) {
                     map.put(name, null);
                 }

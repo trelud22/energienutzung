@@ -18,11 +18,6 @@ import java.util.Map;
 public class YearController {
     public final YearService yearService;
 
-    @GetMapping("/")
-    public ResponseEntity<List<Map<String, Object>>> getYears(){
-        return ResponseEntity.ok(yearService.getYears());
-    }
-
     @GetMapping("/{year}")
     public ResponseEntity<?> getByYear(
             @PathVariable int year

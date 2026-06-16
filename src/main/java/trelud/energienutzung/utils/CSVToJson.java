@@ -27,10 +27,9 @@ public class CSVToJson implements ApplicationRunner {
     private final RegionRepository regionRepository;
     private final SectorRepository sectorRepository;
     private final YearRepository yearRepository;
-    private final FuelRepository fuelRepository;
 
-    public static final boolean READ_CSV = true;
-    public static final boolean READ_FROM_FILE = true;
+    public static final boolean READ_CSV = false;
+    public static final boolean READ_FROM_FILE = false;
 
     @Override
     public void run(@NonNull ApplicationArguments args) throws Exception {

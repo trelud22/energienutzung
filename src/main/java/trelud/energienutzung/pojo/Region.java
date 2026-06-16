@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import java.util.List;
 @Entity
 @Table(name = "region")
 @Data
-@DtoEntity
 public class Region {
 
     @Id

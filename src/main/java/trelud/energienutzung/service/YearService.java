@@ -18,9 +18,9 @@ public class YearService {
         return DtoService.convertList(yearRepository.findAll());
     }
 
-    public Map<String, Object> getByYear(int year) throws NoSuchObjectException {
+    public List<Map<String, Object>> getByYear(int year) throws NoSuchObjectException {
         Year year1 = yearRepository.findByYear(year);
         if(year1 == null) throw new NoSuchObjectException("No data for year " + year + " found");
-        return DtoService.convertObject(year1);
+        return DtoService.convertList(year1.getConnections());
     }
 }
