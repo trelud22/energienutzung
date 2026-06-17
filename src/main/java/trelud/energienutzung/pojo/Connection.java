@@ -6,12 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
+@DtoEntity
 public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
 @Entity
 @Table(name = "fuel")
 @Data
+@DtoEntity
 public class Fuel {
 
     @Id

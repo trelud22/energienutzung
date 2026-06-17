@@ -140,7 +140,9 @@ public class CSVToJson implements ApplicationRunner {
         for (int i = 2; i < tokens.length; i++) {
             if (!tokens[i].isBlank()){
                 Region region = new Region();
-                region.setRegionName(tokens[i].substring(1, tokens[i].length() - 8));
+                String regionName = tokens[i].split("<")[0];
+                regionName = regionName.substring(1, regionName.length()-1);
+                region.setRegionName(regionName);
                 region.setStartColumn(i);
                 regions.add(region);
             }
