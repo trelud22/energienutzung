@@ -33,7 +33,7 @@ public class CSVToJson implements ApplicationRunner {
 
     @Override
     public void run(@NonNull ApplicationArguments args) throws Exception {
-        log.info("Starting with:  - READ_CSV:{}  - READ_FROM_FILE:{}", READ_CSV, READ_FROM_FILE);
+        log.info("Starting with:  - READ_FROM_FILE:{}  - READ_CSV:{}", READ_FROM_FILE, READ_CSV);
         if(READ_CSV && READ_FROM_FILE){
             List<Connection> connections = new ArrayList<>();
             List<Region> regions = new ArrayList<>();
@@ -55,6 +55,17 @@ public class CSVToJson implements ApplicationRunner {
                 while ((line = reader.readLine()) != null){
                     try{
                         String[] tokens = line.split(",");
+                        if(!tokens[0].isBlank()){
+                            if(tokens[0].startsWith("\"") && !tokens[0].endsWith("\"")){
+                                String[] realTokens = new String[tokens.length-1];
+                                realTokens[0] = tokens[0] + ',' + tokens[1];
+                                for (int i = 1; i < realTokens.length; i++) {
+                                    realTokens[i]=tokens[i+1];
+                                }
+                                tokens = realTokens;
+                            }
+                        }
+
                         if(tokens[0].equals("\"Year\"")){
                             int yearNumber = Integer.parseInt(tokens[1].substring(1, tokens[1].length()-1));
                             currentYear = new Year();
