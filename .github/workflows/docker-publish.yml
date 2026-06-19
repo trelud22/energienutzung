@@ -25,6 +25,9 @@ jobs:
       - name: Make mvnw executable
         run: chmod +x ${{ github.workspace }}/mvnw
 
+      - name: Clean target
+        run: ${{ github.workspace }}/mvnw clean
+
       - name: Build with Maven
         run: ${{ github.workspace }}/mvnw -DskipTests package
 
