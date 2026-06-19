@@ -3,10 +3,7 @@ package trelud.energienutzung.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import trelud.energienutzung.database.*;
-import trelud.energienutzung.pojo.Fuel;
-import trelud.energienutzung.pojo.Region;
-import trelud.energienutzung.pojo.Sector;
-import trelud.energienutzung.pojo.Year;
+import trelud.energienutzung.pojo.*;
 
 import java.rmi.NoSuchObjectException;
 import java.util.List;
@@ -50,9 +47,7 @@ public class ConnectionService {
             throw new NoSuchElementException("Fuel Type " + fuelTypeName + "not found");
         }
 
-
-
-        return null;
+        return DtoService.convertList(connectionRepository.getConnectionsByYearByRegionBySectorByFuelType(yearNumber, regionName, sectorName, fuelTypeName));
     }
 
 }
