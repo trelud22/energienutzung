@@ -10,6 +10,7 @@ services:
 
   app:
     image: ghcr.io/grujud22/weather_project_energy_consumption:latest
+    pull_policy: always
     ports:
       - "8080:8080"
     environment:
