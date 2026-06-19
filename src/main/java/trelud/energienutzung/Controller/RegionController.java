@@ -19,26 +19,8 @@ import java.util.Map;
 public class RegionController {
     private final RegionService regionService;
 
-//    @GetMapping("/")
-//    public ResponseEntity<List<Map<String, Object>>> getRegions(){
-//        return ResponseEntity.ok(regionService.getRegion());
-//    }
-//
 //    @GetMapping("/{region}")
 //    public ResponseEntity<List<Map<String, Object>>> getRegionByName(){
 //
-//    }
-//
-//    @GetMapping("/{year}")
-//    public ResponseEntity<?> getByYear(
-//            @PathVariable int year
-//    ){
-//        try {
-//            return ResponseEntity.ok(regionService.getRegionByYear(year));
-//        } catch (NoSuchObjectException e) {
-//            return ResponseEntity
-//                    .status(HttpStatusCode.valueOf(404))
-//                    .body(e.getMessage());
-//        }
 //    }
 }
