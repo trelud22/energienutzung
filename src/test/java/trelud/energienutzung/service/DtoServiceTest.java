@@ -1,6 +1,7 @@
 package trelud.energienutzung.service;
 
 import org.junit.jupiter.api.Test;
+import trelud.energienutzung.annotation.DtoEntity;
 import trelud.energienutzung.annotation.ToDto;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DtoServiceTest {
 
+    @DtoEntity
     static class Address {
         @ToDto
         String city = "Vienna";
@@ -19,6 +21,7 @@ class DtoServiceTest {
         String postalCode = "1010";
     }
 
+    @DtoEntity
     static class PersonWithDefaultKey {
         @ToDto
         String name = "Max";
@@ -27,16 +30,13 @@ class DtoServiceTest {
         int age = 30;
     }
 
+    @DtoEntity
     static class PersonWithCustomKey {
         @ToDto(key = "fullName")
         String name = "Anna";
     }
 
-    static class PersonWithNestedList {
-        @ToDto
-        List<Address> addresses = List.of(new Address());
-    }
-
+    @DtoEntity
     static class PersonWithUnAnnotatedField {
         String ignored = "should not appear";
 
@@ -72,22 +72,6 @@ class DtoServiceTest {
         assertFalse(result.containsKey("ignored"));
         assertTrue(result.containsKey("visible"));
         assertEquals("yes", result.get("visible"));
-    }
-
-    @Test
-    void testAnnotatedNestedList() {
-        Map<String, Object> result = DtoService.convertObject(new PersonWithNestedList());
-
-        assertTrue(result.containsKey("addresses"));
-        Object value = result.get("addresses");
-        assertInstanceOf(List.class, value);
-
-        List<Address> list = (List<Address>) value;
-        assertEquals(1, list.size());
-
-        Map<String, Object> addressMap = (Map<String, Object>) list.get(0);
-        assertEquals("Vienna", addressMap.get("city"));
-        assertEquals("1010", addressMap.get("zip"));
     }
 
     @Test

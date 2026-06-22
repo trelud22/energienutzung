@@ -10,11 +10,9 @@ import java.util.*;
 @Slf4j
 public class DtoService {
     public static List<Map<String, Object>> convertList(List<?> objectsToDto){
-        List<Map<String, Object>> dtos = new ArrayList<>();
-        while(!objectsToDto.isEmpty()){
-            dtos.add(convertObject(objectsToDto.removeLast()));
-        }
-        return dtos;
+        return objectsToDto.stream()
+                .map(DtoService::convertObject)
+                .toList();
     }
 
     public static Map<String, Object> convertObject(Object o){

@@ -1,13 +1,11 @@
 package trelud.energienutzung.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-import trelud.energienutzung.database.ConnectionRepository;
 import trelud.energienutzung.pojo.*;
 import trelud.energienutzung.service.ConnectionService;
 import trelud.energienutzung.service.DtoService;
@@ -88,5 +86,26 @@ class ConnectionControllerTest {
                 get("http://localhost:8080/energy/connection?year=0&region=a&sector=a&fuelType=a")
         ).andExpect(status().isNotFound())
                 .andExpect(content().string("No Element found"));
+    }
+
+    @Test
+    void get_shouldSetDefault() throws Exception {
+
+        List<Map<String, Object>> list = List.of();
+
+        when(
+                connectionService.getConnectionsByYearByRegionBySectorByFuelType(-1,
+                        "*",
+                        "*",
+                        "*"))
+                .thenReturn(list);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String expectedJson = objectMapper.writeValueAsString(list);
+
+        mockMvc.perform(
+                get("http://localhost:8080/energy/connection")
+        ).andExpect(status().isOk())
+                .andExpect(content().json(expectedJson));
     }
 }
